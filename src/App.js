@@ -21,14 +21,14 @@ class App extends Component {
   }
 
   fetchData = () => {
-    return fetch(`https://newsapi.org/v2/everything?q=${this.state.searchValue}&apiKey=${process.env.REACT_APP_API_KEY}`)
+    return fetch(`https://newsapi.org/v2/everything?q=${this.state.searchValue|| 'all'}&apiKey=${process.env.REACT_APP_API_KEY}`)
         .then((res) => res.json())
         .then((result)=> result.articles)
         .then((data) => this.handleContent(data))
         .catch((err) => this.handleContent([]))
   }
   componentDidMount() {
-   // this.fetchData()
+    this.fetchData()
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.click !== prevState.click) {
