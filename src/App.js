@@ -6,7 +6,8 @@ import Content from './components/Content'
 class App extends Component {
   state = {
     searchValue: '',
-    contents: []
+    contents: [], 
+    click: ''
   }
   handleSearchValue = (e) => {
     this.setState({searchValue: e.target.value})
@@ -14,25 +15,32 @@ class App extends Component {
   handleContent = (data) => {
     this.setState({contents: data})
   }
+
+  handleClick = (clickVal) => {
+    this.setState({click: clickVal});
+  }
+
   fetchData = () => {
-    return fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${this.state.searchValue}&api-key=${process.env.REACT_APP_API_KEY}`)
+    return fetch(`https://newsapi.org/v2/everything?q=${this.state.searchValue}&apiKey=${process.env.REACT_APP_API_KEY}`)
         .then((res) => res.json())
-        .then((result) => result.response.docs)
+        .then((result)=> result.articles)
         .then((data) => this.handleContent(data))
         .catch((err) => this.handleContent([]))
   }
   componentDidMount() {
-    this.fetchData()
+   // this.fetchData()
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.searchValue !== prevState.searchValue) {
-      this.fetchData()
+    if (this.state.click !== prevState.click) {
+      this.handleClick('');
+            this.fetchData();
+      
     }
   }
   render() {
     return (
       <div className="App">
-        <Header searchValue={this.state.searchValue} handleSearchValue={this.handleSearchValue} />
+        <Header searchValue={this.state.searchValue} handleSearchValue={this.handleSearchValue} click = {this.state.clickVal} handleClick= {this.handleClick}/>
         <Content contents={this.state.contents} handleContent={this.handleContent} />
       </div>
     );
