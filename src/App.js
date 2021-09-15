@@ -1,11 +1,21 @@
+import { Component } from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <h2>Hello from react app</h2>
-    </div>
-  );
+import Header from './components/Header'
+class App extends Component {
+  state = {
+    searchValue: ''
+  }
+  handleSearchValue = (e) => {
+    this.setState({searchValue: e.target.value})
+  }
+  render() {
+    return (
+      <div className="App">
+        <Header searchValue={this.state.searchValue} handleSearchValue={this.handleSearchValue} />
+      </div>
+    );
+  }
+  
 }
 
 export default App;

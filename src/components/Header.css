@@ -1,0 +1,31 @@
+.site-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #eaeaea;
+}
+.site-logo {
+  width: 145px;
+}
+.site-logo img {
+  width: 100%;
+}
+.search-input {
+  display: flex;
+}
+.search-input input {
+  border: none;
+  height: 35px;
+  width: 100%;
+  padding: 0 16px;
+}
+.search-input button {
+  border: none;
+  background-color: black;
+  color: #fff;
+  width: 80px;
+  cursor: pointer;
+}
+.search-input button:hover {
+  background-color: #4e4e4e;
+}
