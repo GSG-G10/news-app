@@ -5,7 +5,8 @@ function Content ({contents}) {
   return (
     <main className="main-content">
       <section className="news-cards">
-          {contents.map((content) => {
+          {contents.length !== 0 ?
+          contents.map((content) => {
             const {title, content: newContent, urlToImage, source } = content
             return (
               
@@ -21,7 +22,7 @@ function Content ({contents}) {
           </div>
           )
             
-          })}
+          }) : <h3>No Data to show!</h3>}
         
       </section>
     </main>
