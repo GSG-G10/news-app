@@ -25,7 +25,7 @@ class App extends Component {
         .then((res) => res.json())
         .then((result)=> result.articles)
         .then((data) => this.handleContent(data))
-        .catch((err) => this.handleContent([]))
+        .catch((err) => console.error(err))
   }
   componentDidMount() {
     this.fetchData()
@@ -33,7 +33,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.click !== prevState.click) {
       this.handleClick('');
-            this.fetchData();
+      this.fetchData();
       
     }
   }
