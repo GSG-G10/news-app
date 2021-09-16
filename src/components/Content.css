@@ -13,6 +13,8 @@
 }
 .card-image img {
   width: 100%;
+  object-fit: cover;
+  height: 290px;
 }
 .card-content {
   background-color: #eaeaea;
@@ -21,6 +23,11 @@
 }
 .card-paragraph {
   margin: 6px 0;
+}
+@media screen and (max-width: 1366px) {
+  .card-image img {
+    height: 210px;
+  }
 }
 @media screen and (max-width: 900px) {
   .news-cards {
@@ -31,4 +38,5 @@
   .news-cards {
     grid-template-columns: 1fr;
   }
+  
 }
